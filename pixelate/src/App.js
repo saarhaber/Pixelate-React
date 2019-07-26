@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-//import Grid from './Components/Grid'
+import Grid from './Components/Grid'
 
 class App extends React.Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class App extends React.Component {
             <option value="white">White</option>
           </select>
         </div>
-        {/* <Grid /> */}
+        <Grid />
       </div>
     )
   }
