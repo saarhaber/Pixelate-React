@@ -4,7 +4,6 @@ function Grid(props) {
     
     
     return(
-
     )
 }
 
