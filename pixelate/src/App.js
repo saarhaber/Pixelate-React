@@ -7,23 +7,32 @@ class App extends React.Component {
     super(props)
     this.state = {
       clickedColor: "red",
-      columns: 3,
+      columns: 5,
       rows: 3
     }
     this.handleChange = this.handleChange.bind(this);
   }
 
-   handleChange (event) {
+  handleChange (event) {
     this.setState({[event.target.name]: event.target.value})
   }
-
+  addRow=()=>{
+    this.setState({ 
+      rows : this.state.rows+1
+    });
+  }
+  addCol=()=>{
+    this.setState({ 
+      columns : this.state.columns+1
+    });
+  }
   render() {
     return(
       <div>
         <div>
-          <button>Add Row</button>
+          <button onClick ={this.addRow}>Add Row</button>
           <button>Delete Row</button>
-          <button>Add Column</button>
+          <button onClick ={this.addCol}>Add Column</button>
           <button>Delete Column</button>
           <select name="clickedColor" onChange={this.handleChange} value={this.state.clickedColor}>
             <option value="red" >Red</option>
@@ -32,7 +41,8 @@ class App extends React.Component {
             <option value="white">White</option>
           </select>
         </div>
-        <Grid />
+        <br></br>
+        <Grid row = {this.state.rows} col = {this.state.columns}/>
       </div>
     )
   }
