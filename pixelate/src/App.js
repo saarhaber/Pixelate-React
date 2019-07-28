@@ -92,7 +92,21 @@ class App extends React.Component {
       })
     }
   }
-
+  deleteCol = () => {
+    if (this.state.rows > 0) {
+      this.setState({
+        columns: this.state.columns - 1
+      })
+  
+      for (let x = 0; x < this.state.grid_matrix.length; x++){
+        this.setState(prevState => {
+        return(
+        prevState.grid_matrix[x].row_array.pop()
+        )
+      })
+      }
+    }
+  }
   addCol = () => {
     this.setState({ 
       columns : this.state.columns+1
@@ -113,7 +127,7 @@ class App extends React.Component {
           <button onClick ={this.addRow}>Add Row</button>
           <button onClick={this.deleteRow}>Delete Row</button>
           <button onClick ={this.addCol}>Add Column</button>
-          <button>Delete Column</button>
+          <button onClick = {this.deleteCol}>Delete Column</button>
           <select name="clickedColor" onChange={this.handleChange} value={this.state.clickedColor}>
             <option value="red" >Red</option>
             <option value="blue" >Blue</option>
