@@ -76,6 +76,7 @@ class App extends React.Component {
         prevState.grid_matrix.push({ row_array: new_row })
       )
     })
+    console.log(this.state.grid_matrix)
   }
 
   deleteRow = () => {
@@ -96,6 +97,13 @@ class App extends React.Component {
     this.setState({ 
       columns : this.state.columns+1
     });
+    for (let x = 0; x < this.state.grid_matrix.length; x++){
+      this.setState(prevState => {
+      return(
+      prevState.grid_matrix[x].row_array[this.state.grid_matrix[x].row_array.length] = { color: "grey"}
+      )
+    })
+    }
   }
 
   render() {
