@@ -51,21 +51,26 @@ class App extends React.Component {
         }
     ]
     }
+
     this.handleChange = this.handleChange.bind(this);
+    this.addRow = this.addRow.bind(this)
+    this.deleteRow = this.deleteRow.bind(this)
   }
 
   handleChange (event) {
     this.setState({[event.target.name]: event.target.value})
   }
 
-  addRow=()=>{
+  addRow = () => {
     this.setState({ 
-      rows : this.state.rows+1
+      rows : this.state.rows + 1
     })
+
     let new_row = []
     for (let i = 0; i < this.state.columns; i++) {
       new_row[i] = { color: "grey" }
     }
+
     this.setState(prevState => {
       return (
         prevState.grid_matrix.push({ row_array: new_row })
@@ -73,17 +78,32 @@ class App extends React.Component {
     })
   }
 
-  addCol=()=>{
+  deleteRow = () => {
+    if (this.state.rows > 0) {
+      this.setState({
+        rows: this.state.rows - 1
+      })
+  
+      this.setState(prevState => {
+        return(
+          prevState.grid_matrix.pop()
+        )
+      })
+    }
+  }
+
+  addCol = () => {
     this.setState({ 
       columns : this.state.columns+1
     });
   }
+
   render() {
     return(
       <div>
         <div>
           <button onClick ={this.addRow}>Add Row</button>
-          <button>Delete Row</button>
+          <button onClick={this.deleteRow}>Delete Row</button>
           <button onClick ={this.addCol}>Add Column</button>
           <button>Delete Column</button>
           <select name="clickedColor" onChange={this.handleChange} value={this.state.clickedColor}>
