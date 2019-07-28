@@ -62,6 +62,15 @@ class App extends React.Component {
     this.setState({ 
       rows : this.state.rows+1
     })
+    let new_row = []
+    for (let i = 0; i < this.state.columns; i++) {
+      new_row[i] = { color: "grey" }
+    }
+    this.setState(prevState => {
+      return (
+        prevState.grid_matrix.push({ row_array: new_row })
+      )
+    })
   }
 
   addCol=()=>{
@@ -85,7 +94,7 @@ class App extends React.Component {
           </select>
         </div>
         <br/>
-        <Grid grid_matrix={this.state.grid_matrix}/>
+        <Grid row = {this.state.rows} col = {this.state.columns} grid_matrix={this.state.grid_matrix}/>
       </div>
     )
   }
