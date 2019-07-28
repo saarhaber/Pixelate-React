@@ -1,26 +1,39 @@
 import React from 'react'
+import { NONAME } from 'dns';
 
 function Grid(props) {
-        return(
-            <div>
-                {
-                    props.grid_matrix.map(function(row) {
-                        return(
-                            <div>
-                                {
-                                    row.row_array.map(function(cell) {
-                                        let cell_style = {
-                                            backGroundColor: cell.color
-                                        }
-                                        return (<button style={cell_style}>Test</button>)
-                                    })
-                                }
-                            </div>
-                        )
-                    })
-                }
-            </div>
-        )
+    return(
+        <div>
+            {
+                props.grid_matrix.map(function(row, row_index) {
+                    return(
+                        <div>
+                            {
+                                row.row_array.map(function(cell, column_index) {
+                                    let cell_style = {
+                                        borderStyle: "none",
+                                        backgroundColor: cell.color,
+                                        height: "30px",
+                                        width: "30px",
+                                        margin: "2px"
+                                    }
+                                    return (
+                                        <button 
+                                            style={cell_style} 
+                                            onClick={
+                                                () => {
+                                                    props.changeColor(row_index, column_index)
+                                                }
+                                            }>
+                                        </button>)
+                                })
+                            }
+                        </div>
+                    )
+                })
+            }
+        </div>
+    )
 }
 
 // OLD GRID COMPONENT
