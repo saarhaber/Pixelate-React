@@ -1,59 +1,10 @@
 import React from 'react'
 
-class Grid extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            grid_matrix: [
-                {
-                    row_array: [
-                        {
-                            color: "grey"
-                        },
-                        {
-                            color: "grey"
-                        },
-                        {
-                            color: "grey"
-                        }
-                    ]
-                },
-                {
-                    row_array: [
-                        {
-                            color: "grey"
-                        },
-                        {
-                            color: "grey"
-                        },
-                        {
-                            color: "grey"
-                        }
-                    ]
-                },
-                {
-                    row_array: [
-                        {
-                            color: "grey"
-                        },
-                        {
-                            color: "grey"
-                        },
-                        {
-                            color: "grey"
-                        }
-                    ]
-                }
-            ]
-        }
-    }
-
-    render() {
+function Grid(props) {
         return(
             <div>
                 {
-                    this.state.grid_matrix.map(function(row) {
+                    props.grid_matrix.map(function(row) {
                         return(
                             <div>
                                 {
@@ -70,7 +21,6 @@ class Grid extends React.Component {
                 }
             </div>
         )
-    }
 }
 
 // OLD GRID COMPONENT

@@ -7,8 +7,49 @@ class App extends React.Component {
     super(props)
     this.state = {
       clickedColor: "red",
-      columns: 5,
-      rows: 3
+      columns: 3,
+      rows: 3,
+      grid_matrix: [
+        {
+            row_array: [
+                {
+                    color: "grey"
+                },
+                {
+                    color: "grey"
+                },
+                {
+                    color: "grey"
+                }
+            ]
+        },
+        {
+            row_array: [
+                {
+                    color: "grey"
+                },
+                {
+                    color: "grey"
+                },
+                {
+                    color: "grey"
+                }
+            ]
+        },
+        {
+            row_array: [
+                {
+                    color: "grey"
+                },
+                {
+                    color: "grey"
+                },
+                {
+                    color: "grey"
+                }
+            ]
+        }
+    ]
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -16,11 +57,13 @@ class App extends React.Component {
   handleChange (event) {
     this.setState({[event.target.name]: event.target.value})
   }
+
   addRow=()=>{
     this.setState({ 
       rows : this.state.rows+1
-    });
+    })
   }
+
   addCol=()=>{
     this.setState({ 
       columns : this.state.columns+1
@@ -41,8 +84,8 @@ class App extends React.Component {
             <option value="white">White</option>
           </select>
         </div>
-        <br></br>
-        <Grid row = {this.state.rows} col = {this.state.columns}/>
+        <br/>
+        <Grid grid_matrix={this.state.grid_matrix}/>
       </div>
     )
   }
