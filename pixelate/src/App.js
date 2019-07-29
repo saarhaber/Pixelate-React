@@ -9,7 +9,14 @@ class App extends React.Component {
       clickedColor: "red",
       columns: 0,
       rows: 0,
-      grid_matrix: []
+      grid_matrix: [],
+      main_div_style: {
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center"
+      }
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -101,7 +108,8 @@ class App extends React.Component {
 
   render() {
     return(
-      <div>
+      <div style={this.state.main_div_style}>
+        <h1>Pixelate</h1>
         <div>
           <button onClick ={this.addRow}>Add Row</button>
           <button onClick={this.deleteRow}>Delete Row</button>
